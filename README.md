@@ -22,7 +22,7 @@ We now want to display the received black and white image on the frontend. Once 
 
 ## Phase 3
 
-This works for small images, but with our nieve approach, large images can take a long time to convert. This leaves users confused why nothing is happening on the page, and if the request takes too long, it might timeout. Let's implement the same image conversion in a [Celery](http://docs.celeryproject.org/en/latest/index.html) job.
+This works for small images, but with our naive approach, large images can take a long time to convert. This leaves users confused about the status of the conversion, and if the request takes too long, it might timeout. Let's implement the same image conversion in a [Celery](http://docs.celeryproject.org/en/latest/index.html) job.
 
 This requires a number of changes. First, we need to store the image somewhere accessible to both the worker and the server. We'll use (a mocked version of) S3 to do this. Second, we need to store the completed image in S3 as well so that the client can retrieve it. Third, we need to write to the database the location in S3 the file is stored so that we can retrieve it once the job is complete. Finally, we need to create a new polling endpoint that we can use to determine when the image is ready. The endpoint we use to start the job can return the job id which will be used when polling.
 
