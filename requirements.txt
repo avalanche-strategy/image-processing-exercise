@@ -25,7 +25,7 @@ kombu==4.6.7
 MarkupSafe==1.1.1
 matplotlib==3.1.2
 networkx==2.4
-numpy==1.18.0
+numpy==1.22.0
 packaging==19.2
 pathtools==0.1.2
 Pillow==7.0.0
